@@ -1,11 +1,11 @@
-# ⚡ HyperTrader: Low-Latency Limit Order Book & Matching Engine
+# ⚡ hyprTrader: Low-Latency Limit Order Book & Matching Engine
 
 ![Language](https://img.shields.io/badge/language-C%2B%2B20-blue.svg)
 ![Build](https://img.shields.io/badge/build-CMake-green.svg)
 ![Latency](https://img.shields.io/badge/latency-%3C1%C2%B5s-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
-**HyperTrader** is a high-frequency trading (HFT) simulation engine built in **C++20**. It implements a Limit Order Book (LOB) with **Price-Time Priority** matching logic, optimized for sub-microsecond latency on commodity hardware.
+**hyprTrader** is a high-frequency trading (HFT) simulation engine built in **C++20**. It implements a Limit Order Book (LOB) with **Price-Time Priority** matching logic, optimized for sub-microsecond latency on commodity hardware.
 
 The system bypasses standard library overheads by utilizing custom memory arenas, lock-free concurrency patterns, and cache-friendly data structures to minimize **Tick-to-Trade** latency.
 
@@ -53,7 +53,7 @@ graph LR
 
 ### Memory Layout Strategy
 
-Instead of using `std::map` (Red-Black Tree) which scatters nodes in heap memory, HyperTrader uses pre-allocated vectors and intrusive linked lists.
+Instead of using `std::map` (Red-Black Tree) which scatters nodes in heap memory, hyprTrader uses pre-allocated vectors and intrusive linked lists.
 
 ```mermaid
 classDiagram
@@ -90,7 +90,7 @@ _Hardware: Fedora Linux (WSL2), GCC 15.x, Intel/AMD Host CPU_
 
 ### 1. Memory Allocation Latency
 
-Comparison between standard `new/delete` and `HyperTrader::MemoryPool`.
+Comparison between standard `new/delete` and `hyprTrader::MemoryPool`.
 
 | Allocator Type            | Operations | Avg Latency (ns) | 99th % Latency (ns) |
 | :------------------------ | :--------- | :--------------- | :------------------ |
@@ -122,8 +122,8 @@ _> Note: Benchmarks run using Google Benchmark framework with CPU isolation._
 
 ```bash
 # Clone the repository
-git clone git@github.com:0xSaksham/hyperTrader.git
-cd hyperTrader
+git clone git@github.com:0xSaksham/hyprTrader.git
+cd hyprTrader
 
 # Create build directory
 mkdir build && cd build
@@ -137,10 +137,10 @@ make -j$(nproc)
 
 ```bash
 # Run Unit Tests (GTest)
-./tests/hypertrader_tests
+./tests/hyprTrader_tests
 
 # Run Micro-benchmarks
-./benchmarks/hypertrader_bench
+./benchmarks/hyprTrader_bench
 ```
 
 ---
