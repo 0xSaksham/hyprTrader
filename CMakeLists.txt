@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(hyperTrader LANGUAGES CXX)
+project(hyprTrader LANGUAGES CXX)
 
 # Force C++20
 set(CMAKE_CXX_STANDARD 20)
@@ -20,8 +20,14 @@ include_directories(src)
 
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 
-add_executable(hyperTrader ${SOURCES})
+add_executable(hyprTrader ${SOURCES})
 
 # Networking & Threads
 find_package(Threads REQUIRED)
-target_link_libraries(hyperTrader PRIVATE Threads::Threads)
+target_link_libraries(hyprTrader PRIVATE Threads::Threads)
+
+# Benchmark config
+find_package(benchmark REQUIRED)
+
+add_executable(hyprTrader_bench benchmarks/MatchingEngineBenchmark.cpp)
+target_link_libraries(hyprTrader_bench PRIVATE benchmark::benchmark)
